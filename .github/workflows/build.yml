@@ -13,4 +13,16 @@ jobs:
     - uses: actions/checkout@v3
     - run: npm install
     - run: npm run all
+
+    - id: version-monitor
+      name: Version Monitor
+      uses: thiagodnf/version-monitor@main
+      with:
+        file: ./package.json
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: echo ${{steps.version-monitor.outputs.version}}
+    - run: echo ${{steps.version-monitor.outputs.release}}
+
     - uses: stefanzweifel/git-auto-commit-action@v4
