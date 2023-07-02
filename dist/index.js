@@ -10589,15 +10589,6 @@ const core = __nccwpck_require__(2186);
 
 module.exports = class ActionUtils {
 
-    static getInputAsArray(name, options) {
-
-        return ActionUtils
-            .getInput(name, options)
-            .split("\n")
-            .map(s => s.trim())
-            .filter(x => x !== "");
-    }
-
     static getInput(name, options = {}) {
 
         let input = core.getInput(name, options);
@@ -10907,8 +10898,6 @@ async function run() {
 
         let file = ActionUtils.getInput("file", { required: true });
 
-        core.info(`This is the input file: ${file}`);
-
         core.setOutput("version", await NodeJsLoader.getVersion(file));
         core.setOutput("release", await GitHubApiUtils.getRelease());
 
@@ -10918,8 +10907,6 @@ async function run() {
 }
 
 run();
-
-
 })();
 
 module.exports = __webpack_exports__;
