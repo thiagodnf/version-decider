@@ -18,12 +18,11 @@ async function run() {
         core.info(`This is the input file: ${file}`);
 
         core.setOutput("version", NodeJsLoader.getVersion(file));
-        core.setOutput("release", await GitHubApiUtils.getLatestRelease());
+        core.setOutput("release", await GitHubApiUtils.getRelease());
 
     } catch (error) {
         core.setFailed(error.message);
     }
-
 }
 
 run();
