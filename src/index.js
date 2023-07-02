@@ -15,8 +15,12 @@ async function run() {
 
         let file = ActionUtils.getInput("file", { required: true });
 
-        core.setOutput("version", await NodeJsLoader.getVersion(file));
-        core.setOutput("release", await GitHubApiUtils.getRelease());
+        const version = await NodeJsLoader.getVersion(file);
+        const release = await GitHubApiUtils.getRelease();
+
+        core.setOutput("version", version);
+        core.setOutput("release", release);
+        core.setOutput("new", version !== release);
 
     } catch (error) {
         core.setFailed(error.message);
