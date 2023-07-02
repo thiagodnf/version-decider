@@ -17,7 +17,7 @@ async function run() {
 
         core.info(`This is the input file: ${file}`);
 
-        core.setOutput("version", NodeJsLoader.getVersion(file));
+        core.setOutput("version", await NodeJsLoader.getVersion(file));
         core.setOutput("release", await GitHubApiUtils.getRelease());
 
     } catch (error) {
