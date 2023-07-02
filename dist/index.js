@@ -10566,7 +10566,7 @@ const FileUtils = __nccwpck_require__(4056);
 
 module.exports = class NodeJsLoader {
 
-    static getVersion(file = "./package.json") {
+    static async getVersion(file = "./package.json") {
 
         const content = FileUtils.readContent(file);
 
@@ -10909,7 +10909,7 @@ async function run() {
 
         core.info(`This is the input file: ${file}`);
 
-        core.setOutput("version", NodeJsLoader.getVersion(file));
+        core.setOutput("version", await NodeJsLoader.getVersion(file));
         core.setOutput("release", await GitHubApiUtils.getRelease());
 
     } catch (error) {
