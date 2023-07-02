@@ -2688,6 +2688,29 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 820:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const FileUtils = __nccwpck_require__(56);
+
+module.exports = class NodeJsLoader {
+
+    getVersion(file = "./package.json") {
+
+        const content = FileUtils.readContent(file);
+
+        const json = JSON.parse(content);
+
+        if (!json.version) {
+            throw new Error(`The 'version' property was not found at ${file}`);
+        }
+
+        return json.version;
+    }
+}
+
+/***/ }),
+
 /***/ 778:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -2895,6 +2918,7 @@ const core = __nccwpck_require__(186);
 
 const ActionUtils = __nccwpck_require__(778);
 const FileUtils = __nccwpck_require__(56);
+const NodeJsLoader = __nccwpck_require__(820);
 
 async function run() {
 
@@ -2908,7 +2932,7 @@ async function run() {
 
         core.info(`This is the input file: ${file}`);
 
-        core.setOutput("version", "ver");
+        core.setOutput("version", NodeJsLoader.getVersion(file));
         core.setOutput("release", "rel");
 
     } catch (error) {
