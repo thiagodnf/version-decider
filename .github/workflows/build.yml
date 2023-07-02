@@ -16,13 +16,13 @@ jobs:
 
     - uses: stefanzweifel/git-auto-commit-action@v4
 
-    - id: version-monitor
-      name: Version Monitor
-      uses: thiagodnf/version-monitor@main
-      with:
-        file: ./package.json
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - id: version-monitor
+    #   name: Version Monitor
+    #   uses: thiagodnf/version-monitor@main
+    #   with:
+    #     file: ./package.json
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - run: echo ${{steps.version-monitor.outputs.version}}
-    - run: echo ${{steps.version-monitor.outputs.release}}
+    # - run: echo ${{steps.version-monitor.outputs.version}}
+    # - run: echo ${{steps.version-monitor.outputs.release}}
