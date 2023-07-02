@@ -2695,7 +2695,7 @@ const FileUtils = __nccwpck_require__(56);
 
 module.exports = class NodeJsLoader {
 
-    getVersion(file = "./package.json") {
+    static getVersion(file = "./package.json") {
 
         const content = FileUtils.readContent(file);
 
