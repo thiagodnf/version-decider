@@ -1,7 +1,7 @@
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 351:
+/***/ 241:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -135,7 +135,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __nccwpck_require__(351);
+const command_1 = __nccwpck_require__(241);
 const file_command_1 = __nccwpck_require__(717);
 const utils_1 = __nccwpck_require__(278);
 const os = __importStar(__nccwpck_require__(37));
@@ -2688,10 +2688,76 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 653:
-/***/ ((module) => {
+/***/ 778:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = eval("require")("./wait");
+const core = __nccwpck_require__(186);
+
+module.exports = class ActionUtils {
+
+    static getInputAsArray(name, options) {
+
+        return ActionUtils
+            .getInput(name, options)
+            .split("\n")
+            .map(s => s.trim())
+            .filter(x => x !== "");
+    }
+
+    static getInput(name, options = {}) {
+
+        let input = core.getInput(name, options);
+
+        if (input) {
+            input = input.trim();
+        }
+
+        return input;
+    }
+}
+
+/***/ }),
+
+/***/ 56:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const fs = __nccwpck_require__(147);
+const path = __nccwpck_require__(17);
+
+module.exports = class FileUtils {
+
+    static getWorkspacePath() {
+        return process.env["GITHUB_WORKSPACE"] || "";
+    }
+
+    static isWorkspaceEmpty() {
+        return FileUtils.isEmpty(FileUtils.getWorkspacePath());
+    }
+
+    static exists(fileOrPath) {
+        return fs.existsSync(fileOrPath);
+    }
+
+    static isEmpty(fileOrPath) {
+
+        if (!fileOrPath || fileOrPath.trim() === "") {
+            throw new Error(`File or path is blank`);
+        }
+
+        if (!FileUtils.exists(path)) {
+            throw new Error(`${path} does not exist`);
+        }
+
+        return fs.readdirSync(path).length === 0;
+    }
+
+    static readContent(file, encoding = "utf-8") {
+
+        const filePath = path.join(FileUtils.getWorkspacePath(), file);
+
+        return fs.readFileSync(filePath, { encoding });
+    }
+}
 
 
 /***/ }),
@@ -2826,26 +2892,33 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(186);
-const wait = __nccwpck_require__(653);
 
+const ActionUtils = __nccwpck_require__(778);
+const FileUtils = __nccwpck_require__(56);
 
-// most @actions toolkit packages have async methods
 async function run() {
-  try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
 
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
+    try {
 
-    core.setOutput('time', new Date().toTimeString());
-  } catch (error) {
-    core.setFailed(error.message);
-  }
+        if (FileUtils.isWorkspaceEmpty()) {
+            throw new Error("Workspace is empty");
+        }
+
+        let file = ActionUtils.getInput("file", { required: true });
+
+        core.info(`This is the input file: ${file}`);
+
+        core.setOutput("version", "ver");
+        core.setOutput("release", "rel");
+
+    } catch (error) {
+        core.setFailed(error.message);
+    }
+
 }
 
 run();
+
 
 })();
 
