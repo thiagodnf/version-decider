@@ -2,7 +2,7 @@ const FileUtils = require("../utils/FileUtils");
 
 module.exports = class NodeJsLoader {
 
-    getVersion(file = "./package.json") {
+    static getVersion(file = "./package.json") {
 
         const content = FileUtils.readContent(file);
 
