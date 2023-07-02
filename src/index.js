@@ -2,6 +2,7 @@ const core = require("@actions/core");
 
 const ActionUtils = require("./utils/ActionUtils");
 const FileUtils = require("./utils/FileUtils");
+const NodeJsLoader = require("./loaders/NodeJsLoader");
 
 async function run() {
 
@@ -15,7 +16,7 @@ async function run() {
 
         core.info(`This is the input file: ${file}`);
 
-        core.setOutput("version", "ver");
+        core.setOutput("version", NodeJsLoader.getVersion(file));
         core.setOutput("release", "rel");
 
     } catch (error) {
