@@ -1,13 +1,18 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: Version Monitor
+description: A Github action for monitoring versions and releases
+branding:
+  icon: anchor
+  color: orange
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  file:
+    description: The configuration file
     required: true
-    default: '1000'
+    default: "./package.json"
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  version:
+    description: Current Version
+  release:
+    description: Current Release Version
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: node16
+  main: "dist/index.js"
