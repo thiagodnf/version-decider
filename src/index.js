@@ -13,7 +13,7 @@ async function run() {
 
         let file = ActionUtils.getInput("file", { required: true });
 
-        core.info(`file: ${file}`);
+        core.info(`This is the input file: ${file}`);
 
         core.setOutput("version", "ver");
         core.setOutput("release", "rel");
