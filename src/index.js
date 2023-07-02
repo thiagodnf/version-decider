@@ -15,8 +15,6 @@ async function run() {
 
         let file = ActionUtils.getInput("file", { required: true });
 
-        core.info(`This is the input file: ${file}`);
-
         core.setOutput("version", await NodeJsLoader.getVersion(file));
         core.setOutput("release", await GitHubApiUtils.getRelease());
 
@@ -26,4 +24,3 @@ async function run() {
 }
 
 run();
-

@@ -6,8 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the
-      # added or changed files to the repository.
       contents: write
     steps:
     - uses: actions/checkout@v3
@@ -15,14 +13,3 @@ jobs:
     - run: npm run all
 
     - uses: stefanzweifel/git-auto-commit-action@v4
-
-    # - id: version-monitor
-    #   name: Version Monitor
-    #   uses: thiagodnf/version-monitor@main
-    #   with:
-    #     file: ./package.json
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    # - run: echo ${{steps.version-monitor.outputs.version}}
-    # - run: echo ${{steps.version-monitor.outputs.release}}
