@@ -1,5 +1,5 @@
 name: Version Monitor
-description: A Github action for monitoring versions and releases
+description: A GitHub action for monitoring versions and releases
 branding:
   icon: anchor
   color: orange

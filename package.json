@@ -1,6 +1,6 @@
 {
   "name": "version-monitor",
-  "description": "A Github action for monitoring versions and releases",
+  "description": "A GitHub action for monitoring versions and releases",
   "version": "0.0.1",
   "author": "Thiago Ferreira",
   "license": "MIT",
