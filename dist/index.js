@@ -2744,11 +2744,11 @@ module.exports = class FileUtils {
             throw new Error(`File or path is blank`);
         }
 
-        if (!FileUtils.exists(path)) {
-            throw new Error(`${path} does not exist`);
+        if (!FileUtils.exists(fileOrPath)) {
+            throw new Error(`${fileOrPath} does not exist`);
         }
 
-        return fs.readdirSync(path).length === 0;
+        return fs.readdirSync(fileOrPath).length === 0;
     }
 
     static readContent(file, encoding = "utf-8") {
