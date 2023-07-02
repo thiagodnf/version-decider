@@ -1,4 +1,4 @@
-name: Version Monitor
+name: Version Release
 description: A GitHub action for monitoring versions and releases
 branding:
   icon: anchor

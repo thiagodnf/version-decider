@@ -1,4 +1,4 @@
-# Version Monitor
+# Version Releaser
 
 A GitHub action for monitoring versions and releases
 
