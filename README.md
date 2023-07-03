@@ -9,6 +9,49 @@ A GitHub action for deciding if new versions should be released
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
+## Usage
+
+You can now consume the action by referencing the available version.
+
+```yaml
+- id: version-decider
+  name: Version Decider
+  uses: thiagodnf/version-decider@main
+  with:
+    file: ./package.json
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+Now you can use the output to run the next actions such as:
+
+```yaml
+- name: Creating a new release on Github
+  uses: softprops/action-gh-release@v1
+  if: steps.version-decider.outputs.new
+  with:
+    name: v${{ steps.version-decider.outputs.version }}
+    tag_name: v${{ steps.version-decider.outputs.version }}
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## Input
+
+### `file`
+
+**Required** The configuration file
+
+## Outputs
+
+### `version`
+Current Version
+
+### `release`
+Current Release Version
+
+### `new`
+True if a new version should be released
 
 ## Questions or Suggestions
 
