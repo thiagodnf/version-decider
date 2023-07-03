@@ -15,9 +15,9 @@ jobs:
     
       - uses: actions/checkout@v3
     
-      - id: version-releaser
-        name: Version Releaser
-        uses: thiagodnf/version-releaser@main
+      - id: version-decider
+        name: Version Decider
+        uses: thiagodnf/version-decider@main
         with:
           file: ./package.json
         env:
@@ -25,9 +25,9 @@ jobs:
 
       - name: Creating a new release on Github
         uses: softprops/action-gh-release@v1
-        if: steps.version-releaser.outputs.new
+        if: steps.version-decider.outputs.new
         with:
-          name: v${{ steps.version-releaser.outputs.version }}
-          tag_name: v${{ steps.version-releaser.outputs.version }}
+          name: v${{ steps.version-decider.outputs.version }}
+          tag_name: v${{ steps.version-decider.outputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,4 +1,4 @@
-name: Version Releaser
+name: Version Decider
 description: A GitHub action for deciding if new versions should be released
 branding:
   icon: anchor

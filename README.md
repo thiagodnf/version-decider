@@ -1,11 +1,11 @@
-# Version Releaser
+# Version Decider
 
 A GitHub action for deciding if new versions should be released
 
-[![Build](https://github.com/thiagodnf/version-monitor/actions/workflows/release.yml/badge.svg)](https://github.com/thiagodnf/version-monitor/actions/workflows/build.yml)
-[![GitHub Release](https://img.shields.io/github/release/thiagodnf/version-monitor.svg)](https://github.com/thiagodnf/version-monitor/releases/latest)
-[![GitHub contributors](https://img.shields.io/github/contributors/thiagodnf/version-monitor.svg)](https://github.com/thiagodnf/version-monitor/graphs/contributors)
-[![GitHub stars](https://img.shields.io/github/stars/thiagodnf/version-monitor.svg)](https://github.com/thiagodnf/version-monitor)
+[![Build](https://github.com/thiagodnf/version-decider/actions/workflows/release.yml/badge.svg)](https://github.com/thiagodnf/version-decider/actions/workflows/build.yml)
+[![GitHub Release](https://img.shields.io/github/release/thiagodnf/version-decider.svg)](https://github.com/thiagodnf/version-decider/releases/latest)
+[![GitHub contributors](https://img.shields.io/github/contributors/thiagodnf/version-decider.svg)](https://github.com/thiagodnf/version-decider/graphs/contributors)
+[![GitHub stars](https://img.shields.io/github/stars/thiagodnf/version-decider.svg)](https://github.com/thiagodnf/version-decider)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
