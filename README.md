@@ -2,7 +2,7 @@
 
 A GitHub action for deciding if new versions should be released
 
-[![Build](https://github.com/thiagodnf/version-decider/actions/workflows/release.yml/badge.svg)](https://github.com/thiagodnf/version-decider/actions/workflows/build.yml)
+[![Build](https://github.com/thiagodnf/version-decider/actions/workflows/build.yml/badge.svg)](https://github.com/thiagodnf/version-decider/actions/workflows/build.yml)
 [![GitHub Release](https://img.shields.io/github/release/thiagodnf/version-decider.svg)](https://github.com/thiagodnf/version-decider/releases/latest)
 [![GitHub contributors](https://img.shields.io/github/contributors/thiagodnf/version-decider.svg)](https://github.com/thiagodnf/version-decider/graphs/contributors)
 [![GitHub stars](https://img.shields.io/github/stars/thiagodnf/version-decider.svg)](https://github.com/thiagodnf/version-decider)
