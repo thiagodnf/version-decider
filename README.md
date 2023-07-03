@@ -16,7 +16,7 @@ You can now consume the action by referencing the available version.
 ```yaml
 - id: version-decider
   name: Version Decider
-  uses: thiagodnf/version-decider@v1.0.6
+  uses: thiagodnf/version-decider@v1.0.7
   with:
     file: ./package.json
   env:
