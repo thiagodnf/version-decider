@@ -1,6 +1,6 @@
 # Version Releaser
 
-A GitHub action for monitoring versions and releases
+A GitHub action for deciding if new versions should be released
 
 [![Build](https://github.com/thiagodnf/version-monitor/actions/workflows/release.yml/badge.svg)](https://github.com/thiagodnf/version-monitor/actions/workflows/build.yml)
 [![GitHub Release](https://img.shields.io/github/release/thiagodnf/version-monitor.svg)](https://github.com/thiagodnf/version-monitor/releases/latest)

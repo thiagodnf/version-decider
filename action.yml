@@ -1,5 +1,5 @@
 name: Version Releaser
-description: A GitHub action for monitoring versions and releases
+description: A GitHub action for deciding if new versions should be released
 branding:
   icon: anchor
   color: orange
