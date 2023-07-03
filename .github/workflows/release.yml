@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  pull_request:
+  push:
+    paths:
+      - 'package.json'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    
+      - uses: actions/checkout@v3
+    
+      - id: version-releaser
+        name: Version Releaser
+        uses: thiagodnf/version-releaser@main
+        with:
+          file: ./package.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Creating a new release on Github
+        uses: softprops/action-gh-release@v1
+        if: steps.version-releaser.outputs.new
+        with:
+          name: v${{ steps.version-releaser.outputs.version }}
+          tag_name: v${{ steps.version-releaser.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
