@@ -1,5 +1,5 @@
 name: Version Decider
-description: A GitHub action for deciding if new versions should be released
+description: A GitHub action for deciding if new a version should be released
 branding:
   icon: anchor
   color: orange

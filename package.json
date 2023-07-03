@@ -1,6 +1,6 @@
 {
   "name": "version-decider",
-  "description": "A GitHub action for deciding if new versions should be released",
+  "description": "A GitHub action for deciding if new a version should be released",
   "version": "1.0.5",
   "author": "Thiago Ferreira",
   "license": "MIT",

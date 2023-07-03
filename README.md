@@ -1,6 +1,6 @@
 # Version Decider
 
-A GitHub action for deciding if new versions should be released
+A GitHub action for deciding if new a version should be released
 
 [![Build](https://github.com/thiagodnf/version-decider/actions/workflows/build.yml/badge.svg)](https://github.com/thiagodnf/version-decider/actions/workflows/build.yml)
 [![GitHub Release](https://img.shields.io/github/release/thiagodnf/version-decider.svg)](https://github.com/thiagodnf/version-decider/releases/latest)
