@@ -1,7 +1,7 @@
 {
   "name": "version-decider",
   "description": "A GitHub action for deciding if new versions should be released",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Thiago Ferreira",
   "license": "MIT",
   "main": "index.js",
