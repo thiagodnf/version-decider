@@ -35053,6 +35053,9 @@ module.exports = class MavenLoader {
 
             pomParser.parse(opts, function(error, pomResponse) {
 
+                console.error(error);
+                console.log(pomResponse);
+
                 if (error) {
                     reject(error);
                     return;
