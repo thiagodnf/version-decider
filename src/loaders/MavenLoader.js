@@ -4,16 +4,16 @@ module.exports = class MavenLoader {
 
     static async getVersion(file = "./pom.xml") {
 
-        var opts = {
-            filePath: file, // The path to a pom file
-        };
-
         return new Promise(function(resolve, reject) {
+
+            var opts = {
+                filePath: file, // The path to a pom file
+            };
 
             pomParser.parse(opts, function(error, pomResponse) {
 
                 if (error) {
-                    resolve(error);
+                    reject(error);
                     return;
                 }
 

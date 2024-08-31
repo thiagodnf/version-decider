@@ -23,7 +23,7 @@ async function run() {
 
         let version = null;
 
-        if(fileExtension === "xml"){
+        if(fileExtension == "xml"){
             version = await MavenLoader.getVersion(file);
         }else{
             version = await NodeJsLoader.getVersion(file);
