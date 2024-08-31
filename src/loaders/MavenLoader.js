@@ -12,7 +12,7 @@ module.exports = class MavenLoader {
 
             pomParser.parse(opts, function(error, pomResponse) {
 
-                if (err) {
+                if (error) {
                     resolve(error);
                     return;
                 }
