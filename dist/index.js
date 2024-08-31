@@ -43712,6 +43712,10 @@ async function run() {
 
         const release = await GitHubApiUtils.getRelease();
 
+        console.log("version", version);
+        console.log("release", release);
+        console.log("new", version !== release);
+
         core.setOutput("version", version);
         core.setOutput("release", release);
         core.setOutput("new", version !== release);
