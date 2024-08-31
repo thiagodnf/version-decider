@@ -5,7 +5,7 @@ module.exports = class MavenLoader {
     static async getVersion(file = "./pom.xml") {
 
         var opts = {
-            filePath: __dirname + file, // The path to a pom file
+            filePath: file, // The path to a pom file
         };
 
         return new Promise(function(resolve, reject) {
