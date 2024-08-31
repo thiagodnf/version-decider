@@ -15,6 +15,8 @@ async function run() {
 
         let file = ActionUtils.getInput("file", { required: true });
 
+        core.setOutput("file", file);
+
         const version = await NodeJsLoader.getVersion(file);
         const release = await GitHubApiUtils.getRelease();
 

@@ -14,4 +14,4 @@ module.exports = class NodeJsLoader {
 
         return json.version;
     }
-}
+};

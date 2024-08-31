@@ -48,4 +48,4 @@ module.exports = class GitHubApiUtils {
 
         return latestRelease;
     }
-}
+};

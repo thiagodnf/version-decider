@@ -12,4 +12,4 @@ module.exports = class ActionUtils {
 
         return input;
     }
-}
+};

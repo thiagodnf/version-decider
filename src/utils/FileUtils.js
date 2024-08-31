@@ -18,7 +18,7 @@ module.exports = class FileUtils {
     static isEmpty(fileOrPath) {
 
         if (!fileOrPath || fileOrPath.trim() === "") {
-            throw new Error(`File or path is blank`);
+            throw new Error("File or path is blank");
         }
 
         if (!FileUtils.exists(fileOrPath)) {
@@ -34,4 +34,4 @@ module.exports = class FileUtils {
 
         return fs.readFileSync(filePath, { encoding });
     }
-}
+};
