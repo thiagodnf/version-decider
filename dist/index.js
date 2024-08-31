@@ -35061,8 +35061,8 @@ module.exports = class MavenLoader {
                     return;
                 }
 
-                if (pomResponse.version) {
-                    resolve(pomResponse.version);
+                if (pomResponse.pomObject.project.version) {
+                    resolve(pomResponse.pomObject.project.version);
                 }else{
                     reject(`The 'version' property was not found at ${file}`);
                 }
