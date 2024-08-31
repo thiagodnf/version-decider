@@ -3,6 +3,7 @@ const core = require("@actions/core");
 const ActionUtils = require("./utils/ActionUtils");
 const FileUtils = require("./utils/FileUtils");
 const NodeJsLoader = require("./loaders/NodeJsLoader");
+const MavenLoader = require("./loaders/MavenLoader");
 const GitHubApiUtils = require("./utils/GitHubApiUtils");
 
 async function run() {
@@ -15,12 +16,19 @@ async function run() {
 
         let file = ActionUtils.getInput("file", { required: true });
 
-        console.log(file);
-        console.log(file.split(".").pop());
-        core.setOutput("file", file);
-        core.setOutput("fileExtension", file.split(".").pop());
+        let fileExtension = file.split(".").pop();
 
-        const version = await NodeJsLoader.getVersion(file);
+        core.setOutput("file", file);
+        core.setOutput("fileExtension", fileExtension);
+
+        let version = null;
+
+        if(fileExtension === "xml"){
+            version = await MavenLoader.getVersion(file);
+        }else{
+            version = await NodeJsLoader.getVersion(file);
+        }
+
         const release = await GitHubApiUtils.getRelease();
 
         core.setOutput("version", version);

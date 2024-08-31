@@ -24929,6 +24929,30 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 914:
+/***/ ((module) => {
+
+module.exports = class MavenLoader {
+
+    static async getVersion(file = "./pom.xml") {
+
+        var opts = {
+            filePath: file, // The path to a pom file
+        };
+
+        const pom = await pomParser.parse(opts);
+
+        if (!pom.version) {
+            throw new Error(`The 'version' property was not found at ${file}`);
+        }
+
+        return pom.version;
+    }
+};
+
+
+/***/ }),
+
 /***/ 5820:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -30567,6 +30591,7 @@ const core = __nccwpck_require__(2186);
 const ActionUtils = __nccwpck_require__(778);
 const FileUtils = __nccwpck_require__(4056);
 const NodeJsLoader = __nccwpck_require__(5820);
+const MavenLoader = __nccwpck_require__(914);
 const GitHubApiUtils = __nccwpck_require__(9011);
 
 async function run() {
@@ -30579,12 +30604,19 @@ async function run() {
 
         let file = ActionUtils.getInput("file", { required: true });
 
-        console.log(file);
-        console.log(file.split(".").pop());
-        core.setOutput("file", file);
-        core.setOutput("fileExtension", file.split(".").pop());
+        let fileExtension = file.split(".").pop();
 
-        const version = await NodeJsLoader.getVersion(file);
+        core.setOutput("file", file);
+        core.setOutput("fileExtension", fileExtension);
+
+        let version = null;
+
+        if(fileExtension === "xml"){
+            version = await MavenLoader.getVersion(file);
+        }else{
+            version = await NodeJsLoader.getVersion(file);
+        }
+
         const release = await GitHubApiUtils.getRelease();
 
         core.setOutput("version", version);
