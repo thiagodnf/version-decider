@@ -18,8 +18,8 @@ async function run() {
 
         let fileExtension = file.split(".").pop();
 
-        core.setOutput("file", file);
-        core.setOutput("fileExtension", fileExtension);
+        console.log("file", file);
+        console.log("fileExtension", fileExtension);
 
         let version = null;
 
