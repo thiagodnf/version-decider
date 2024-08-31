@@ -1,3 +1,5 @@
+const pomParser = require("pom-parser");
+
 module.exports = class MavenLoader {
 
     static async getVersion(file = "./pom.xml") {
