@@ -5,15 +5,24 @@ module.exports = class MavenLoader {
     static async getVersion(file = "./pom.xml") {
 
         var opts = {
-            filePath: file, // The path to a pom file
+            filePath: __dirname + file, // The path to a pom file
         };
 
-        const pom = await pomParser.parse(opts);
+        return new Promise(function(resolve, reject) {
 
-        if (!pom.version) {
-            throw new Error(`The 'version' property was not found at ${file}`);
-        }
+            pomParser.parse(opts, function(error, pomResponse) {
 
-        return pom.version;
+                if (err) {
+                    resolve(error);
+                    return;
+                }
+
+                if (pomResponse.version) {
+                    resolve(pomResponse.version);
+                }else{
+                    reject(`The 'version' property was not found at ${file}`);
+                }
+            });
+        });
     }
 };
